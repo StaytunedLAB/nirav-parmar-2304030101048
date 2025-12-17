@@ -1,27 +1,24 @@
+
 import { Octokit } from "@octokit/core";
-import 'dotenv/config'; // Loads .env automatically
 
 const octokit = new Octokit({
-    auth: ""
+    auth: "key"
 });
 
-/**
- * Create a new GitHub issue
- */
-export async function createIssue(title, body, labels = ['Task']) {
+async function createIssue () {
     try {
-        await octokit.request('POST /repos/{owner}/{repo}/issues', {
-            owner: process.env.REPO_OWNER,
-            repo: process.env.REPO_NAME,
-            title,
-            body,
-            labels,
+        await octokit.request('POST /repos/StaytunedLAB/nirav-parmar-2304030101048/issues', {
+            owner: 'StaytunedLAB',
+            repo: 'nirav-parmar-2304030101048',
+            title: 'issue created using javascript code',
+            body: "issue created using javascript code using rest api key token.",
             headers: {
                 'X-GitHub-Api-Version': '2022-11-28'
             }
         });
-        console.log("✅ Issue created successfully");
+        console.log("issue created");
     } catch (error) {
-        console.error("❌ Error creating issue:", error.message);
+        console.error("Error creating issue:", error);
     }
 }
+createIssue();
