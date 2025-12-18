@@ -1,8 +1,7 @@
-
 import { Octokit } from "@octokit/core";
 
 const octokit = new Octokit({
-    auth: "key"
+    auth: "CLASSIC TOKAN"
 });
 
 async function createIssue () {
